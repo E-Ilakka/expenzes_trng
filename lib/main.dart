@@ -1,3 +1,4 @@
+import 'package:expenzes_trng/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,17 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Expense Tracker',
+      title: "Expenze-trng",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "Inter"),
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'Welcome to Expense Tracker!',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-          ),
-        ),
-      ),
+      home: OnboardingScreen(),
     );
   }
 }
