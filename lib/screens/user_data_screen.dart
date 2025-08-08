@@ -1,3 +1,5 @@
+import 'package:expenzes_trng/screens/main_screen.dart';
+import 'package:expenzes_trng/services/user_services.dart';
 import 'package:expenzes_trng/utils/colors.dart';
 import 'package:expenzes_trng/utils/constants.dart';
 import 'package:expenzes_trng/widgets/custom_button.dart';
@@ -158,13 +160,32 @@ class _UserDataScreenState extends State<UserDataScreen> {
                       ),
                       SizedBox(height: 30),
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             String userName = _nameController.text;
                             String userEmail = _emailController.text;
                             String userPassword = _passwordController.text;
                             String userConfirmPassword =
                                 _confirmPasswordController.text;
+                            // save the user name and emauil in the device storage
+                            await UserServices().storeUserDetails(
+                              userName: userName,
+                              userEmail: userEmail,
+                              password: userPassword,
+                              confirmPassword: userConfirmPassword,
+                              context: context,
+                            );
+                            // navigate to the main screen
+                            if (context.mounted) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const MainScreen();
+                                  },
+                                ),
+                              );
+                            }
                           }
                         },
                         child: CustomButton(
