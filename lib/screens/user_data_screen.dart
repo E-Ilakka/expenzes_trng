@@ -168,7 +168,7 @@ class _UserDataScreenState extends State<UserDataScreen> {
                             String userConfirmPassword =
                                 _confirmPasswordController.text;
                             // save the user name and emauil in the device storage
-                            await UserServices().storeUserDetails(
+                            await UserServices.storeUserDetails(
                               userName: userName,
                               userEmail: userEmail,
                               password: userPassword,

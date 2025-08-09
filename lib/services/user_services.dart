@@ -1,9 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserServices {
   // method to store the user name and user email in shared preferences
-  Future<void> storeUserDetails({
+  static Future<void> storeUserDetails({
     required String userName,
     required String userEmail,
     required String password,
@@ -25,7 +27,7 @@ class UserServices {
       SharedPreferences preps = await SharedPreferences.getInstance();
 
       // store the user name and email as key value pairs
-      await preps.setString("userName", userName);
+      await preps.setString("username", userName);
       await preps.setString("email", userEmail);
 
       // shoe a message to the user
@@ -35,5 +37,14 @@ class UserServices {
     } catch (err) {
       err.toString();
     }
+  }
+
+  // method to get the user name from shared preferences
+  static Future<bool> checkUserName() async {
+    SharedPreferences preps = await SharedPreferences.getInstance();
+    // check if the user name is stored in shared preferences
+    String? userName = preps.getString("username");
+    // if the user name is not null, return true
+    return userName != null;
   }
 }

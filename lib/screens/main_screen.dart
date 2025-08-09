@@ -10,9 +10,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Main Screen")),
-      body: Center(child: Text("Welcome to the Main Screen!")),
-    );
+    return MaterialApp();
   }
 }
