@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
           bool hasUserName = snapshot.data ?? false;
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Expenzes',
+
             theme: ThemeData(fontFamily: "inter"),
+            title: 'Expenzes',
             home: Wrapper(showMainScreen: hasUserName),
             // Navigate to the main screen if user data exists
           );

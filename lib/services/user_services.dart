@@ -47,4 +47,14 @@ class UserServices {
     // if the user name is not null, return true
     return userName != null;
   }
+
+  // method to get the username and the email from shared preferences
+  static Future<Map<String, String?>> getUserDetails() async {
+    SharedPreferences preps = await SharedPreferences.getInstance();
+    // get the user name and email from shared preferences
+    String? userName = preps.getString("username");
+    String? userEmail = preps.getString("email");
+    // return the user details as a map
+    return {"username": userName, "email": userEmail};
+  }
 }
