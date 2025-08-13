@@ -414,10 +414,18 @@ class _AddNewScreenState extends State<AddNewScreen> {
                             thickness: 5,
                           ),
                           SizedBox(height: kDefaultPadding),
+
                           // save button
-                          CustomButton(
-                            buttonName: "Add",
-                            buttonColor: _selectedMethode == 0 ? kRed : kGreen,
+                          GestureDetector(
+                            onTap: () {
+                              // save the expense or  the income data into the shared preferences
+                            },
+                            child: CustomButton(
+                              buttonName: "Add",
+                              buttonColor: _selectedMethode == 0
+                                  ? kRed
+                                  : kGreen,
+                            ),
                           ),
                         ],
                       ),
