@@ -40,5 +40,29 @@ class ExpenseModel {
     required this.description,
   });
 
-  // Factory method to create an Expense object from a map
+  // Convert the ExpenseModel to a JSON model
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'amount': amount,
+      'category': category.index,
+      'date': date.toIso8601String(),
+      'time': time.toIso8601String(),
+      'description': description,
+    };
+  }
+
+  // Create an ExpenseModel from a JSON model
+  factory ExpenseModel.fromJson(Map<String, dynamic> json) {
+    return ExpenseModel(
+      id: json['id'],
+      title: json['title'],
+      amount: json['amount'],
+      category: ExpenseCategory.values[json['category']],
+      date: DateTime.parse(json['date']),
+      time: DateTime.parse(json['time']),
+      description: json['description'] ?? '',
+    );
+  }
 }

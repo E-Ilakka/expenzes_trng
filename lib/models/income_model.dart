@@ -40,4 +40,30 @@ class IncomeModel {
     required this.category,
     this.description = '',
   });
+
+  // Convert the IncomeModel to a JSON model
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'amount': amount,
+      'date': date.toIso8601String(),
+      'category': category.index,
+      'description': description,
+      'time': time.toIso8601String(),
+    };
+  }
+
+  // Create an IncomeModel from a JSON model
+  factory IncomeModel.fromJson(Map<String, dynamic> json) {
+    return IncomeModel(
+      json['title'],
+      DateTime.parse(json['time']),
+      id: json['id'],
+      amount: json['amount'],
+      date: DateTime.parse(json['date']),
+      category: IncomeCategory.values[json['category']],
+      description: json['description'] ?? '',
+    );
+  }
 }
